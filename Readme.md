@@ -1,7 +1,11 @@
 
 # last-error-middleware
 
-  Middleware for catching the last express.js error and rendering it as json or an error page.
+  Middleware for catching the last `express.js` error and rendering it as json or an error page.
+
+## Installation
+
+    $ npm install last-error-middleware
 
 ## Example
 
