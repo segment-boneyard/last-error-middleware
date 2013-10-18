@@ -20,8 +20,8 @@ app.use(lastError({ pages: { '500': __dirname + '/500.html' }});
   Generate your own `last-error` middleware function with custom `options`. The defaults are:
 
 ```js
-    {
-      "json": true,   // force json responses
-      "pages": {}     // status code to html template path
-    }
+{
+  "json": true,   // force json responses
+  "pages": {}     // status code to html template path
+}
 ```
