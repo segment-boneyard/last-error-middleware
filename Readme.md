@@ -25,7 +25,7 @@ app.use(lastError({ pages: { '500': __dirname + '/500.html' }});
 
 ```js
 {
-  "json": true,   // force json responses
+  "json": false,   // force json responses
   "pages": {}     // status code to html template path
 }
 ```
