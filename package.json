@@ -1,0 +1,15 @@
+{
+  "name": "last-error-middleware",
+  "version": "0.0.1",
+  "dependencies": {
+    "defaults": "~1.0.0"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "supertest": "~0.8.0",
+    "express": "~3.4.1",
+    "http-error": "segmentio/http-error",
+    "hbs": "~2.4.0"
+  },
+  "main": "lib/index.js"
+}
