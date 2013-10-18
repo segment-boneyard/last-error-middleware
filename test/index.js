@@ -68,7 +68,7 @@ describe('last-error', function () {
       .expect('Content-Type', /html/)
       .expect(200)
       .end(function (err, res) {
-        assert(res.text.indexOf('<body>401</body>') !== -1);
+        assert(res.text.indexOf('<h1>401</h1>') !== -1);
         done();
       });
   });
