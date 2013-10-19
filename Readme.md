@@ -12,9 +12,9 @@
 var lastError = require('last-error-middleware');
 
 app.use(lastError({ pages: { 
-  '401': __dirname + '/401.html',
-  '500': __dirname + '/500.html',
-  '503': __dirname + '/503.html'
+  '401': 'path/to/401.html',
+  '500': 'path/to/500.html',
+  '503': 'path/to/503.html'
 }});
 
 ```
@@ -30,7 +30,7 @@ app.use(function (req, res, next) {
 });
 
 app.use(lastError({ pages: {
-  '404': __dirname + '/404.html'
+  '404': 'path/to/404.html'
 }});
 ```
 
