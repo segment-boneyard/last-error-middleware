@@ -42,7 +42,6 @@ app.use(lastError({ pages: {
 
 ```js
 {
-  "json": false,  // force json responses
   "pages": {}     // status code to html template path
 }
 ```
