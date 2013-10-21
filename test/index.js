@@ -46,9 +46,9 @@ describe('last-error', function () {
       });
   });
 
-  it('should allow forcing json errors', function (done) {
+  it('should recognize application/json Accepts header', function (done) {
     var app = newApp();
-    app.use(lastError({ json: true }));
+    app.use(lastError());
     request(app)
       .get('/')
       .set('Accept', 'application/json')
@@ -65,6 +65,7 @@ describe('last-error', function () {
     app.use(lastError({ pages: { '401': __dirname + '/401.html' }}));
     request(app)
       .get('/')
+      .set('Accept', 'text/html')
       .expect('Content-Type', /html/)
       .expect(200)
       .end(function (err, res) {
