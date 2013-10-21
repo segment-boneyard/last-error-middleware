@@ -1,3 +1,7 @@
+0.0.5 - October 21, 2013
+-------------------------
+ - Optionally return the stack
+
 0.0.4 - October 21, 2013
 -------------------------
  - Removing `json:true` as an option

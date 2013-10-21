@@ -42,6 +42,7 @@ app.use(lastError({ pages: {
 
 ```js
 {
-  "pages": {}     // status code to html template path
+  "pages": {},     // status code to html template path
+  "stack": false   // return the error stack with json responses
 }
 ```

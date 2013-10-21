@@ -60,6 +60,21 @@ describe('last-error', function () {
       });
   });
 
+  it('should optionally return the stack', function (done) {
+    var app = newApp();
+    app.use(lastError({ stack: true }));
+    request(app)
+      .get('/')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(err.status)
+      .end(function (err, res) {
+        checkJson(res);
+        assert(res.body.error.stack);
+        done();
+      });
+  });
+
   it('should render 401 page', function (done) {
     var app = newApp();
     app.use(lastError({ pages: { '401': __dirname + '/401.html' }}));
