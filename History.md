@@ -1,3 +1,7 @@
+0.0.6 - October 21, 2013
+-------------------------
+ - Only serves html if Accept header contains "html" and page is specified. More freely falls back to json.
+
 0.0.5 - October 21, 2013
 -------------------------
  - Optionally return the stack
