@@ -22,7 +22,7 @@ app.use(errors.thrown());
 app.use(errors.notFound());
 ```
 
-## Why is `404` separate?
+#### Why is `404` separate?
 
 A request that passes through all the middleware without a response is not considered an error by express, so it is not passed to a normal 4-arity error middleware.
 
