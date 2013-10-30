@@ -1,6 +1,11 @@
+0.1.1 - October 29, 2013
+-------------------------
+ - Add emitter
+ - Emit `error`
+
 0.1.0 - October 29, 2013
 -------------------------
- - Added 404 support
+ - Add 404 support
  - Change API to `errors.thrown()` and `errors.notFound`
 
 0.0.6 - October 21, 2013

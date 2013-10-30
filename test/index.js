@@ -5,32 +5,33 @@ var express = require('express');
 var html = require('hbs').__express;
 var lastError = require('..');
 var request = require('supertest');
+var noop = function (){};
+
+
+var err = error(401, 'UNAUTHORIZED', 'Not authorized');
+
+function newApp () {
+  var app = express()
+    .use(express.bodyParser())
+    .engine('html', html)
+    .set('views', __dirname);
+
+  app.all('/', function (req, res, next) {
+    return next(err);
+  });
+
+  return app;
+}
+
+function checkJson (res) {
+  var body = res.body;
+  assert(body.error);
+  assert(body.error.code === err.code);
+  assert(body.error.status === err.status);
+  assert(body.error.message === err.message);
+}
 
 describe('last-error', function () {
-
-  var err = error(401, 'UNAUTHORIZED', 'Not authorized');
-
-  function newApp () {
-    var app = express()
-      .use(express.bodyParser())
-      .engine('html', html)
-      .set('views', __dirname);
-
-    app.all('/', function (req, res, next) {
-      return next(err);
-    });
-
-    return app;
-  }
-
-  function checkJson (res) {
-    var body = res.body;
-    assert(body.error);
-    assert(body.error.code === err.code);
-    assert(body.error.status === err.status);
-    assert(body.error.message === err.message);
-  }
-
   it('should return 401 json error for xhr requests', function (done) {
     var app = newApp();
     var errors = lastError();
@@ -114,5 +115,24 @@ describe('last-error', function () {
         assert(body.error.code === 'NOT_FOUND');
         done();
       });
+  });
+
+  it('should emit errors', function (done) {
+    var app = newApp();
+    var errors = lastError();
+    app.use(errors.thrown());
+    app.use(errors.notFound());
+    errors.on('error', function (err) {
+      assert(err);
+      assert(err.status === 404);
+      assert(err.code === 'NOT_FOUND');
+      done();
+    });
+    request(app)
+      .get('/not/found')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(404)
+      .end(noop);
   });
 });

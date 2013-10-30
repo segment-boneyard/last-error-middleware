@@ -64,3 +64,25 @@ app.use(errors.notFound());
   message: 'Not found.'
 }
 ```
+
+### on(`error`, ..)
+
+  Emitted on every error.
+
+```js
+var lastError = require('last-error-middleware');
+
+var errors = lastError({ pages: {
+  '401': 'path/to/401.html',
+  '404': 'path/to/404.html',
+  '500': 'path/to/500.html',
+  '503': 'path/to/503.html'
+});
+
+app.use(errors.thrown());
+app.use(errors.notFound());
+
+errors.on('error', function (err) {
+  console.log(err.stack);
+});
+```

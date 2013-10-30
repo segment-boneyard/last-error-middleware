@@ -1,6 +1,6 @@
 {
   "name": "last-error-middleware",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "dependencies": {
     "defaults": "~1.0.0"
   },
