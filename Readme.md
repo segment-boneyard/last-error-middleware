@@ -65,7 +65,7 @@ app.use(errors.notFound());
 }
 ```
 
-### on(`error`, ..)
+### on('error', ..)
 
   Emitted on every error.
 
