@@ -1,3 +1,8 @@
+0.1.0 - October 29, 2013
+-------------------------
+ - Added 404 support
+ - Change API to `errors.thrown()` and `errors.notFound`
+
 0.0.6 - October 21, 2013
 -------------------------
  - Only serves html if Accept header contains "html" and page is specified. More freely falls back to json.

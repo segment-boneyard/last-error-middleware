@@ -33,7 +33,9 @@ describe('last-error', function () {
 
   it('should return 401 json error for xhr requests', function (done) {
     var app = newApp();
-    app.use(lastError());
+    var errors = lastError();
+    app.use(errors.thrown());
+    app.use(errors.notFound());
     request(app)
       .get('/')
       .set({ 'X-Requested-With': 'xmlhttprequest' })
@@ -48,7 +50,9 @@ describe('last-error', function () {
 
   it('should recognize application/json Accepts header', function (done) {
     var app = newApp();
-    app.use(lastError());
+    var errors = lastError();
+    app.use(errors.thrown());
+    app.use(errors.notFound());
     request(app)
       .get('/')
       .set('Accept', 'application/json')
@@ -62,7 +66,9 @@ describe('last-error', function () {
 
   it('should optionally return the stack', function (done) {
     var app = newApp();
-    app.use(lastError({ stack: true }));
+    var errors = lastError({ stack: true });
+    app.use(errors.thrown());
+    app.use(errors.notFound());
     request(app)
       .get('/')
       .set('Accept', 'application/json')
@@ -77,7 +83,9 @@ describe('last-error', function () {
 
   it('should render 401 page', function (done) {
     var app = newApp();
-    app.use(lastError({ pages: { '401': __dirname + '/401.html' }}));
+    var errors = lastError({ pages: { '401': __dirname + '/401.html' }});
+    app.use(errors.thrown());
+    app.use(errors.notFound());
     request(app)
       .get('/')
       .set('Accept', 'text/html')
@@ -85,6 +93,25 @@ describe('last-error', function () {
       .expect(200)
       .end(function (err, res) {
         assert(res.text.indexOf('<h1>401</h1>') !== -1);
+        done();
+      });
+  });
+
+  it('should catch 404 errors', function (done) {
+    var app = newApp();
+    var errors = lastError();
+    app.use(errors.thrown());
+    app.use(errors.notFound());
+    request(app)
+      .get('/not/found')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(404)
+      .end(function (err, res) {
+        var body = res.body;
+        assert(body.error);
+        assert(body.error.status === 404);
+        assert(body.error.code === 'NOT_FOUND');
         done();
       });
   });
