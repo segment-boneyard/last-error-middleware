@@ -1,3 +1,7 @@
+0.1.2 - November 13, 2013
+-------------------------
+ - Adding `*` catch all error page
+
 0.1.1 - October 29, 2013
 -------------------------
  - Add emitter

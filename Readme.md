@@ -15,7 +15,8 @@ var errors = lastError({ pages: {
   '401': 'path/to/401.html',
   '404': 'path/to/404.html',
   '500': 'path/to/500.html',
-  '503': 'path/to/503.html'
+  '503': 'path/to/503.html',
+  '*'  : 'path/to/omg.html',
 });
 
 app.use(errors.thrown());
