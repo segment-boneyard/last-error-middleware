@@ -66,7 +66,7 @@ app.use(errors.notFound());
 }
 ```
 
-### on('error', ..)
+### on('err', ..)
 
   Emitted on every error.
 
@@ -83,7 +83,7 @@ var errors = lastError({ pages: {
 app.use(errors.thrown());
 app.use(errors.notFound());
 
-errors.on('error', function (err) {
+errors.on('err', function (err) {
   console.log(err.stack);
 });
 ```

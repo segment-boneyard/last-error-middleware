@@ -1,3 +1,7 @@
+0.2.0 - December 3, 2013
+-------------------------
+ - Rename event `error` to `err`
+
 0.1.2 - November 13, 2013
 -------------------------
  - Adding `*` catch all error page

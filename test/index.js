@@ -122,7 +122,7 @@ describe('last-error', function () {
     var errors = lastError();
     app.use(errors.thrown());
     app.use(errors.notFound());
-    errors.on('error', function (err) {
+    errors.on('err', function (err) {
       assert(err);
       assert(err.status === 404);
       assert(err.code === 'NOT_FOUND');
