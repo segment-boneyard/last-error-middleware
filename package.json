@@ -2,7 +2,7 @@
   "name": "last-error-middleware",
   "description": "Middleware for catching the last error in your express.js apps.",
   "repository": "git://github.com/segmentio/last-error-middleware",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "license": "MIT",
   "dependencies": {
     "defaults": "~1.0.0",
