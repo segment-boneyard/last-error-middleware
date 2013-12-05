@@ -1,3 +1,7 @@
+0.3.0 - December 5, 2013
+------------------------
+ - Change to expose an express app
+
 0.2.0 - December 3, 2013
 -------------------------
  - Rename event `error` to `err`
